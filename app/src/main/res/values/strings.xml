@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">Rock, Paper, Scissors</string>
+    <string name="app_name">Level 4 Task 2 - Rock, Paper, Scissors</string>
+    <string name="bottom_nav_play">Play</string>
+    <string name="bottom_nav_history">History</string>
+    <string name="vs">V.S.</string>
+    <string name="computer">Computer</string>
+    <string name="you">You</string>
+    <string name="instructions">Instructions: select Rock, paper or scissors to play</string>
+    <string name="your_stats">Your all time statistics</string>
+
+    <string name="win">Win</string>
+    <string name="draw">Draw</string>
+    <string name="lose">Lose</string>
 </resources>
