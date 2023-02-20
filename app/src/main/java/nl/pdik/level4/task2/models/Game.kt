@@ -7,14 +7,18 @@ import java.util.*
 
 @Entity(tableName = "game")
 data class Game(
-    @ColumnInfo(name = "title")
-    var title: String,
 
-    @ColumnInfo(name = "platform")
-    var platform: String,
+    @ColumnInfo(name = "result")
+    var result: GameResult,
 
-    @ColumnInfo(name = "release")
-    var release: Date,
+    @ColumnInfo(name = "computer_move")
+    var computer_move: GameMove,
+
+    @ColumnInfo(name = "player_move")
+    var player_move: GameMove,
+
+    @ColumnInfo(name = "played")
+    var played: Date,
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
