@@ -10,6 +10,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import nl.pdik.level4.task2.ui.theme.RockPaperScissorsTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +24,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+
                 }
             }
         }
@@ -30,14 +32,30 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
+private fun GameRoomNavHost(
+    navController: NavHostController, modifier: Modifier
+) {
+    val viewModel: GameViewModel = viewModel()
+    NavHost(
+        navController = navController,
+        startDestination = Screen.HomeScreen.route,
+    ) {
+        composable(route = Screen.HomeScreen.route)
+        {
+            HomeScreen(navController = navController, viewModel = viewModel)
+        }
+        composable(Screen.AddGameScreen.route) {
+            AddGameScreen(navController = navController, viewModel = viewModel)
+        }
+    }
 
-@Preview(showBackground = true)
+
+
+
+    @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     RockPaperScissorsTheme {
-        Greeting("Android")
+
     }
 }
