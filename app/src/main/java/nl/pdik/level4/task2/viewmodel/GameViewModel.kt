@@ -13,19 +13,23 @@ import nl.pdik.level4.task2.repository.GameRepository
 class GameViewModel(application: Application) : AndroidViewModel(application) {
     private val gameRepository = GameRepository(application.applicationContext)
     private val mainScope = CoroutineScope(Dispatchers.Main)
-    val gameBacklog = gameRepository.getGames()
+    val gamelog = gameRepository.getGames()
+
+    val wins = gameRepository.getWins();
+    val loses = gameRepository.getLoses();
+    val draws = gameRepository.getDraws();
 
     /**
      * Insert a game into the repository.
      */
-    fun NewGame(game: Game) {
+    fun insertGame(game: Game) {
         mainScope.launch {
             withContext(Dispatchers.IO) {
                 gameRepository.insert(game)
             }
-
         }
     }
+
 
     /**
      * Delete the gameLogs from the repository.
@@ -48,4 +52,5 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
+
 }

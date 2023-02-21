@@ -26,8 +26,8 @@ import nl.pdik.level4.task2.viewmodel.GameViewModel
 
 
 @Composable
-fun RockPaperScissorBottomNavigation(navController: NavHostController){
-     val navItems = listOf(
+fun RockPaperScissorBottomNavigation(navController: NavHostController) {
+    val navItems = listOf(
         Screen.HistoryScreen,
         Screen.PlayScreen,
     )
@@ -36,7 +36,12 @@ fun RockPaperScissorBottomNavigation(navController: NavHostController){
         val currentDestination = navBackStackEntry?.destination
         navItems.forEach { screen ->
             BottomNavigationItem(
-                icon = { Icon(painterResource(id = screen.icon), contentDescription = screen.route) },
+                icon = {
+                    Icon(
+                        painterResource(id = screen.icon),
+                        contentDescription = screen.route
+                    )
+                },
                 label = { Text(stringResource(screen.resourceId)) },
                 selectedContentColor = Color.White,
                 unselectedContentColor = Color.Gray,
@@ -59,11 +64,10 @@ fun RockPaperScissorBottomNavigation(navController: NavHostController){
             )
         }
     }
-    NavigationRockPaper(navController, viewModel, modifier = Modifier.padding(innerPadding))
-
 }
+
 @Composable
-fun NavigationRockPaper(navController: NavHostController, viewModel: GameViewModel, modifier: Modifier) {
+fun NavigationRockPaper(navController: NavHostController, viewModel: GameViewModel) {
     NavHost(
         navController,
         startDestination = Screen.PlayScreen.route,

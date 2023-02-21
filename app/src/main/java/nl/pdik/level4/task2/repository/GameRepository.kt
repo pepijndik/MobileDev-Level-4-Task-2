@@ -19,6 +19,10 @@ class GameRepository(context: Context) {
 
     fun getGames() = RockDao.getGames()
 
+    fun getWins() = RockDao.count("WIN")
+    fun getDraws() = RockDao.count("DRAW")
+    fun getLoses() = RockDao.count("LOSE")
+
     suspend fun deleteAll() = RockDao.deleteAll()
 
 }

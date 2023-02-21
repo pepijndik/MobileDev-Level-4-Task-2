@@ -12,10 +12,10 @@ sealed class Screen(
     @StringRes val resourceId: Int,
     val icon: Int
 ) {
-    object PlayScreen : Screen(
-        "play", R.string.bottom_nav_play, R.drawable.gamepad
-    )
 
     object HistoryScreen :
         Screen("history", R.string.bottom_nav_history, R.drawable.baseline_history_24)
+    object PlayScreen : Screen(
+        "play", R.string.bottom_nav_play, R.drawable.gamepad
+    )
 }
