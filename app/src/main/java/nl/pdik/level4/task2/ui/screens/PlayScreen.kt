@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import nl.pdik.level4.task2.R
+import nl.pdik.level4.task2.Utils
 import nl.pdik.level4.task2.models.Game
 import nl.pdik.level4.task2.models.GameMove
 import nl.pdik.level4.task2.models.GameResult
@@ -153,9 +154,9 @@ private fun getStringByIdName(context: Context, name: String): String {
 }
 
 @Composable
-private fun GameOutCome(game: Game?, context: Context) {
-
+fun GameOutCome(game: Game?, context: Context, showDate: Boolean = false) {
     Column(
+        Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         if (game != null) {
@@ -165,6 +166,13 @@ private fun GameOutCome(game: Game?, context: Context) {
                 style = MaterialTheme.typography.subtitle1,
                 fontWeight = FontWeight.Bold
             )
+            if (showDate) {
+                Text(
+                    text =  Utils.dateToString(game.played),
+                    style = MaterialTheme.typography.overline,
+                    fontWeight = FontWeight.Bold
+                )
+            }
 
             Row() {
                 Column() {
